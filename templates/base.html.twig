@@ -34,18 +34,18 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     {% if app.user %}
-        <a class="navbar-brand" href="#">{{ app.user }}</a>
+        <a class="navbar-brand" href="{{ path('fos_user_profile_show') }}">{{ app.user }}</a>
     {% else %}
-        <a class="navbar-brand" href="#">navbar</a>
+        <a class="navbar-brand" href="{{ path('default') }}">Hotel</a>
     {% endif %}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <div class="collapse navbar-collapse" id="navbarExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="{{ path('default') }}">Home</a>
             </li>
             {% if app.user %}
             <li class="nav-item">
@@ -58,20 +58,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('fos_user_security_login') }}">login</a>
             </li>
-            {% endif %}
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+            {% endif %}
     </div>
 </nav>
 
