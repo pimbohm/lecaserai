@@ -54,4 +54,13 @@ class Extras
 
         return $this;
     }
+
+    public function __toString() {
+        return " " . $this->getOmschrijving();
+    }
+
+    public function getExtras()
+    {
+        return $this->getOmschrijving();
+    }
 }
