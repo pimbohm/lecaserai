@@ -14,6 +14,7 @@ class KamerType extends AbstractType
         $builder
             ->add('soort')
             ->add('extras')
+            ->add('prijs')
         ;
     }
 
