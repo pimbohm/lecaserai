@@ -3,9 +3,13 @@
 {% block title %}New Kamer{% endblock %}
 
 {% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
     <h1>Create new Kamer</h1>
 
     {{ include('kamer/_form.html.twig') }}
 
     <a href="{{ path('kamer_index') }}">back to list</a>
+    {% else %}
+        <h1>Geen toegang</h1>
+    {% endif %}
 {% endblock %}

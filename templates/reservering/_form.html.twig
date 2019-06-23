@@ -1,4 +1,8 @@
+{% if is_granted('ROLE_ADMIN') %}
 {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+{% else %}
+    <h1>Geen toegang</h1>
+{% endif %}
