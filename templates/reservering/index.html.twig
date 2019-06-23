@@ -3,6 +3,7 @@
 {% block title %}Reservering index{% endblock %}
 
 {% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
     <h1>Reservering index</h1>
 
     <table class="table">
@@ -36,4 +37,7 @@
     </table>
 
     <a href="{{ path('reservering_new') }}">Create new</a>
+    {% else %}
+        <h1>Geen toegang</h1>
+    {% endif %}
 {% endblock %}

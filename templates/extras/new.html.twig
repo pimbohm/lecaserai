@@ -3,9 +3,13 @@
 {% block title %}New Extras{% endblock %}
 
 {% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
     <h1>Create new Extras</h1>
 
     {{ include('extras/_form.html.twig') }}
 
     <a href="{{ path('extras_index') }}">back to list</a>
+    {% else %}
+        <h1>Geen toegang</h1>
+    {% endif %}
 {% endblock %}

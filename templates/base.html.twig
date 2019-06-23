@@ -48,6 +48,7 @@
                 <a class="nav-link" href="{{ path('default') }}">Home</a>
             </li>
             {% if app.user %}
+            {% if is_granted('ROLE_ADMIN')  %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('extras_index') }}">Extras</a>
             </li>
@@ -60,6 +61,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('reservering_index') }}">Reservaties</a>
             </li>
+            {% endif %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Uitloggen {{ app.user }}</a>
             </li>

@@ -3,9 +3,13 @@
 {% block title %}New Soort{% endblock %}
 
 {% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
     <h1>Create new Soort</h1>
 
     {{ include('soort/_form.html.twig') }}
 
     <a href="{{ path('soort_index') }}">back to list</a>
+    {% else %}
+        <h1>Geen toegang</h1>
+    {% endif %}
 {% endblock %}
