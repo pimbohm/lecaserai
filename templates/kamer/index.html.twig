@@ -4,28 +4,24 @@
 
 {% block body %}
     <h1>Kamer index</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Extras</th>
-                <th></th>
-                <th>Soort</th>
-                <th>actions</th>
-            </tr>
-        </thead>
         <tbody>
         {% for kamer in kamers %}
-            <tr>
-                <td>{{ kamer.id }}</td>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ kamer.id }}</td>
+                    <th>Soort</th>
+                    <td>{{ kamer.soort }}</td>
                     {% for kamer in kamer.extras %}
+                        <th>extras</th>
                         <td>{{ kamer.extras }}</td>
                     {% endfor %}
-                <td>{{ kamer.soort }}</td>
-                <td>
-                    <a href="{{ path('kamer_show', {'id': kamer.id}) }}">show</a>
-                    <a href="{{ path('kamer_edit', {'id': kamer.id}) }}">edit</a>
-                </td>
+                    <td>
+                        <a href="{{ path('kamer_show', {'id': kamer.id}) }}">show</a>
+                        <a href="{{ path('kamer_edit', {'id': kamer.id}) }}">edit</a>
+                    </td>
+                </tr>
             </tr>
         {% else %}
             <tr>
