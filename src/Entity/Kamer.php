@@ -28,6 +28,11 @@ class Kamer
      */
     private $extras;
 
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=0)
+     */
+    private $prijs;
+
     public function __construct()
     {
         $this->extras = new ArrayCollection();
@@ -72,6 +77,18 @@ class Kamer
         if ($this->extras->contains($extra)) {
             $this->extras->removeElement($extra);
         }
+
+        return $this;
+    }
+
+    public function getPrijs()
+    {
+        return $this->prijs;
+    }
+
+    public function setPrijs($prijs): self
+    {
+        $this->prijs = $prijs;
 
         return $this;
     }

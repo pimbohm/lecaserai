@@ -17,6 +17,8 @@
                         <th>extras</th>
                         <td>{{ kamer.extras }}</td>
                     {% endfor %}
+                    <th>Prijs</th>
+                    <td>{{ kamer.prijs }}</td>
                     <td>
                         <a href="{{ path('kamer_show', {'id': kamer.id}) }}">show</a>
                         <a href="{{ path('kamer_edit', {'id': kamer.id}) }}">edit</a>

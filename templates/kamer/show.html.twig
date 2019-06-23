@@ -9,13 +9,15 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ kamer.id }}</td>e
+                <td>{{ kamer.id }}</td>
                 <th>Soort</th>
-                <td>{{ kamer.soort }}</td>/
+                <td>{{ kamer.soort }}</td>
                 {% for kamer in kamer.extras %}
                     <th>extras</th>
                     <td>{{ kamer.extras }}</td>
                 {% endfor %}
+                <th>Prijs</th>
+                <td>{{ kamer.prijs }}</td>
             </tr>
         </tbody>
     </table>
