@@ -3,8 +3,8 @@
 {% block title %}Reservering index{% endblock %}
 
 {% block body %}
-    {% if is_granted('ROLE_ADMIN') %}
-    <h1>Reservering index</h1>
+        {% if is_granted('ROLE_ADMIN')  %}
+     <h1>Reservering index</h1>
 
     <table class="table">
         <thead>
@@ -37,7 +37,7 @@
     </table>
 
     <a href="{{ path('reservering_new') }}">Create new</a>
-    {% else %}
+        {% else %}
         <h1>Geen toegang</h1>
     {% endif %}
 {% endblock %}
