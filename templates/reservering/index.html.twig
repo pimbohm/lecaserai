@@ -3,7 +3,6 @@
 {% block title %}Reservering index{% endblock %}
 
 {% block body %}
-        {% if is_granted('ROLE_ADMIN')  %}
      <h1>Reservering index</h1>
 
     <table class="table">
@@ -13,6 +12,7 @@
                 <th>CheckinDate</th>
                 <th>CheckoutDate</th>
                 <th>Kamer</th>
+                <th>User</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,9 +23,12 @@
                 <td>{{ reservering.checkinDate ? reservering.checkinDate|date('d-m-y') : '' }}</td>
                 <td>{{ reservering.checkoutDate ? reservering.checkoutDate|date('d-m-y') : '' }}</td>
                 <td>{{ reservering.kamer }}</td>
+                <td>{{ reservering.user }}</td>
                 <td>
                     <a href="{{ path('reservering_show', {'id': reservering.id}) }}">show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('reservering_edit', {'id': reservering.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -37,7 +40,4 @@
     </table>
 
     <a href="{{ path('reservering_new') }}">Create new</a>
-        {% else %}
-        <h1>Geen toegang</h1>
-    {% endif %}
 {% endblock %}

@@ -9,19 +9,42 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/reservering")
  */
 class ReserveringController extends AbstractController
 {
+
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     /**
      * @Route("/", name="reservering_index", methods={"GET"})
      */
     public function index(ReserveringRepository $reserveringRepository): Response
     {
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            $reservering = $reserveringRepository->findAll();
+            return $this->render('reservering/index.html.twig', [
+                'reserverings' => $reservering,
+            ]);
+        }
+        elseif ($this->security->isGranted('ROLE_USER')) {
+            $reservering = $reserveringRepository->createQueryBuilder('x')
+                ->orWhere('x.user = :id')->setParameter('id', $this->getUser()->getId())->getQuery()
+                ->getResult();
+            return $this->render('reservering/index.html.twig', [
+                'reserverings' => $reservering,
+            ]);
+        }
         return $this->render('reservering/index.html.twig', [
-            'reserverings' => $reserveringRepository->findAll(),
+            'reserverings' => 1234,
         ]);
     }
 
